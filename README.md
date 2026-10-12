@@ -13,7 +13,7 @@ python app.py
 
 Open port 5000 in the Ports tab.
 
-## Run with Docker
+## Run with Docker commands
 
 ```bash
 docker build -t nova-iphone-store .
