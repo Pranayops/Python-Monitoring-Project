@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090a12">
+  <title>Nova — iPhone 18 Concept Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="announcement">THE FUTURE LOOKS GOOD <span>✦</span> A concept shopping experience for tech lovers</div>
+  <header class="nav wrap">
+    <a class="brand" href="#top"><span class="brand-mark">✳</span> NOVA<span class="brand-dot">.</span></a>
+    <nav><a href="#collection">Collection</a><a href="#experience">Why Nova</a><a href="#offers">Offers</a></nav>
+    <button class="cart" id="cartButton" aria-label="Open cart">Bag <span id="cartCount">0</span></button>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> THE NEXT ICON · CONCEPT EDITION</div>
+        <h1>Make room<br>for <em>what’s next.</em></h1>
+        <p class="hero-sub">Meet the imagined iPhone 18 collection. Big ideas, bold colour, and a little main-character energy.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#collection">Explore the lineup <span>↗</span></a><a class="text-link" href="#experience">Discover the details <span>↓</span></a></div>
+        <div class="hero-stats"><div><b>01</b><span>DESIGN THAT POPS</span></div><div><b>∞</b><span>WAYS TO STAND OUT</span></div></div>
+      </div>
+      <div class="hero-art"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="hero-image"><img src="{{ url_for('static', filename='images/iphone18-hero.png') }}" alt="Concept artwork for a premium smartphone collection"></div><div class="floating-note note-top">NEW ERA <span>✦</span></div><div class="floating-note note-bottom">YOUR NEXT<br><strong>FAVOURITE THING.</strong></div><div class="hero-glow"></div></div>
+      <div class="scroll-cue">SCROLL TO EXPLORE <span>↓</span></div>
+    </section>
+
+    <section class="ticker" aria-label="Store highlights"><div>GOOD TECH. GREAT ENERGY. <span>✳</span> YOUR NEXT ICON. <span>✳</span> MAKE IT YOURS. <span>✳</span> GOOD TECH. GREAT ENERGY. <span>✳</span> YOUR NEXT ICON. <span>✳</span></div></section>
+
+    <section class="collection section wrap" id="collection">
+      <div class="section-heading"><div><div class="eyebrow dark-eyebrow">THE LINEUP</div><h2>Pick your <em>personality.</em></h2></div><p>Three vibes. One very good-looking concept collection.</p></div>
+      <div class="product-grid">
+        {% for p in products %}
+        <article class="product-card" style="--phone-color: {{ p.color }}">
+          <div class="product-top"><span class="product-badge">{{ p.badge }}</span><button class="heart" aria-label="Save {{ p.name }}" onclick="this.classList.toggle('liked'); this.textContent=this.classList.contains('liked')?'♥':'♡'">♡</button></div>
+          <div class="product-visual"><div class="product-halo"></div><div class="phone-mock"><div class="camera camera-a"></div><div class="camera camera-b"></div><div class="camera camera-c"></div><div class="phone-shine"></div></div><div class="phone-front"><div class="dynamic-island"></div><div class="screen-wave"></div></div></div>
+          <div class="product-info"><div class="product-tag">{{ p.tag }}</div><h3>{{ p.name }}</h3><div class="product-meta">{{ p.storage }} <span>·</span> Multiple concept colours</div><div class="product-bottom"><span class="price">{{ p.price }}</span><button class="add-button" data-product="{{ p.name }}">Add to bag <span>+</span></button></div><div class="swatches"><i></i><i></i><i></i><i></i><span>Choose your vibe</span></div></div>
+        </article>
+        {% endfor %}
+      </div>
+      <p class="fine-print">Concept project only. Product names, specifications, availability and prices are illustrative and are not an official Apple listing.</p>
+    </section>
+
+    <section class="feature wrap" id="experience"><div class="feature-copy"><div class="eyebrow">DESIGNED TO BE DIFFERENT</div><h2>Not just a phone.<br><em>Your whole vibe.</em></h2><p>From the first scroll to the final detail, this concept store is made for curious minds and future-facing style.</p><a class="btn btn-light" href="#collection">Find your match <span>↗</span></a></div><div class="feature-side"><div class="feature-tile tile-purple"><span>01 / LOOK</span><b>Colour<br>outside<br>the lines.</b><div class="tile-orb"></div></div><div class="feature-tile tile-blue"><span>02 / FEEL</span><b>Every detail<br>has a little<br>extra.</b><div class="tile-star">✳</div></div></div></section>
+
+    <section class="offer wrap" id="offers"><div class="offer-label">THE STUDENT EDIT <span>✦</span></div><div><h2>Big dreams.<br><em>Smart choices.</em></h2><p>Explore the concept collection, compare your favourites, and build your dream setup.</p></div><a class="btn btn-primary" href="#collection">Shop the concept <span>↗</span></a><div class="offer-decoration">NOVA<br><span>18</span></div></section>
+  </main>
+  <footer class="footer"><div class="wrap footer-inner"><a class="brand" href="#top"><span class="brand-mark">✳</span> NOVA<span class="brand-dot">.</span></a><p>Made for the next generation of tech lovers.</p><div class="footer-right">STUDENT PROJECT · NOT AFFILIATED WITH APPLE</div></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body></html>
