@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-flask-iphone-store
+  namespace: default
+  labels:
+    app: python-flask-iphone-store
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: python-flask-iphone-store
+  template:
+    metadata:
+      labels:
+        app: python-flask-iphone-store
+    spec:
+      containers:
+        - name: python-flask-iphone-store
+          image: pranayops24/python-pro:20261013-093747
+          ports:
+           - containerPort: 5000
+              
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-flask-iphone-store-svc
+  namespace: default
+  labels:
+    app: python-flask-iphone-store
+spec:
+  type: ClusterIP
+  selector:
+    app: python-flask-iphone-store
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 5000
