@@ -1,6 +1,8 @@
 from flask import Flask, render_template
+from prometheus_flask_exporter import PrometheusMetrics
 
 app = Flask(__name__)
+metrics = PrometheusMetrics(app)
 
 PRODUCTS = [
     {"name": "iPhone 18 Pro", "tag": "PRO POWER", "storage": "256 GB", "price": "Concept price · ₹1,64,900", "color": "#b9a4e8", "badge": "MOST LOVED"},
