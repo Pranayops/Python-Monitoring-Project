@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: python-flask-iphone-store
-          image: pranayops24/python-pro:20261014-125642
+          image: pranayops24/python-pro:20261014-134039
           ports:
            - containerPort: 5000
               
