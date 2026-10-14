@@ -6,7 +6,7 @@ metadata:
   labels:
     app: python-flask-iphone-store
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: python-flask-iphone-store
